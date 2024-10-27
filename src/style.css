@@ -1,1 +1,222 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
 
+/* Body styles */
+body {
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+/* Navigation styles */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+/* Main content styles */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+section {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+/* Form styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input, select, textarea {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}
+
+/* Additional styling for specific sections */
+#pemesanan {
+    border-left: 4px solid #4CAF50;
+}
+
+#pemrosesan {
+    border-left: 4px solid #2196F3;
+}
+
+#pengiriman {
+    border-left: 4px solid #ff9800;
+}
+
+#manajemen {
+    border-left: 4px solid #f44336;
+}
+
+/* Status indicators */
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+}
+
+.status-pending {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.status-processed {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.status-shipped {
+    background-color: #2196F3;
+    color: white;
+}
+
+/* Animation effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Hover effects for interactive elements */
+input:focus, 
+select:focus, 
+textarea:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Print styles */
+@media print {
+    header, nav, footer {
+        display: none;
+    }
+
+    main {
+        margin: 0;
+        padding: 0;
+    }
+
+    section {
+        break-inside: avoid;
+        box-shadow: none;
+    }
+}
