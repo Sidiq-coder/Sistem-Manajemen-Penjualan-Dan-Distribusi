@@ -1,11 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sistem Manajemen Penjualan dan Distribusi</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    
+    <header>
+        <h1>Selamat Datang di Sistem Manajemen Penjualan dan Distribusi</h1>
+        <nav>
+            <ul>
+                <li><a href="#pemesanan">Pemesanan</a></li>
+                <li><a href="#pemrosesan">Pemrosesan Pesanan</a></li>
+                <li><a href="#pengiriman">Info Pengiriman</a></li>
+                <li><a href="#manajemen">Manajemen Retur</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="pemesanan">
+            <h2>Pemesanan dan Permintaan Produk</h2>
+            <form>
+                <label for="produk">Pilih Produk:</label>
+                <select id="produk" name="produk">
+                    <option value="produk1">Produk 1</option>
+                    <option value="produk2">Produk 2</option>
+                    <option value="produk3">Produk 3</option>
+                </select>
+                <label for="jumlah">Jumlah:</label>
+                <input type="number" id="jumlah" name="jumlah" min="1" required>
+                <button type="submit">Pesan</button>
+            </form>
+        </section>
+
+        <section id="pemrosesan">
+            <h2>Pemrosesan Pesanan dan Pembayaran</h2>
+            <p>Setelah pemesanan, silakan lakukan pembayaran melalui metode yang tersedia.</p>
+            <button>Pembayaran</button>
+        </section>
+
+        <section id="pengiriman">
+            <h2>Info Pengiriman dan Distribusi</h2>
+            <p>Informasi pengiriman akan dikirimkan melalui email setelah pemesanan dikonfirmasi.</p>
+        </section>
+
+        <section id="manajemen">
+            <h2>Manajemen Retur dan Keluhan Pelanggan</h2>
+            <form>
+                <label for="keluhan">Masukkan Keluhan:</label>
+                <textarea id="keluhan" name="keluhan" rows="4" required></textarea>
+                <button type="submit">Kirim Keluhan</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Sistem Manajemen Penjualan dan Distribusi</p>
+    </footer>
 </body>
 </html>
