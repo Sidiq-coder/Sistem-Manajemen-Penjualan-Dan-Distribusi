@@ -1,0 +1,61 @@
+1. Antarmuka Pemakai (User Interface)
+Sistem ini harus menyediakan antarmuka pemakai yang user-friendly dan mudah diakses, baik untuk administrator maupun pengguna umum (misalnya, staf penjualan dan distribusi). Antarmuka pemakai dibagi menjadi beberapa jenis halaman utama:
+
+Dashboard Utama: Tampilan beranda setelah login yang menampilkan statistik penjualan, stok barang, dan grafik transaksi terkini.
+Manajemen Produk: Formulir untuk menambah, mengubah, dan menghapus data produk, termasuk informasi stok, harga, dan kategori.
+Manajemen Stok: Tampilan dan pencarian stok barang, dengan fitur notifikasi otomatis jika stok di bawah level minimum.
+Transaksi Penjualan: Halaman untuk pencatatan transaksi penjualan, termasuk detail pelanggan, produk yang dijual, harga total, dan status pembayaran.
+Manajemen Pelanggan: Tampilan data pelanggan yang mencakup histori pembelian, kontak, dan preferensi pelanggan.
+Pengiriman dan Distribusi: Formulir pengelolaan jadwal pengiriman, status pengiriman, dan rincian armada atau kurir.
+Laporan dan Analitik: Halaman khusus untuk menampilkan laporan penjualan, distribusi, dan metrik yang relevan dengan grafik dan tabel.
+Pengaturan: Halaman untuk pengaturan akun pengguna, hak akses, dan preferensi sistem.
+
+
+2. Kebutuhan Perangkat Keras (Hardware Requirements)
+Untuk menjalankan sistem ini secara optimal, berikut adalah spesifikasi minimum perangkat keras yang diperlukan:
+
+Server:
+
+Prosesor: Quad-core CPU, minimal 2.5 GHz
+RAM: 16 GB atau lebih
+Penyimpanan: SSD 256 GB untuk penyimpanan data dan aplikasi, serta tambahan penyimpanan jika diperlukan untuk backup
+Konektivitas: Koneksi internet berkecepatan tinggi untuk mendukung akses jarak jauh
+Klien (Pengguna):
+
+Desktop/Laptop:
+
+Prosesor: Dual-core CPU, minimal 2 GHz
+RAM: 4 GB atau lebih
+Penyimpanan: 20 GB ruang kosong untuk cache browser dan data
+Layar: Resolusi minimal 1366x768
+Mobile:
+
+OS: Android 8.0 atau iOS 12.0 ke atas
+RAM: 3 GB atau lebih
+
+
+3. Kebutuhan Perangkat Lunak (Software Requirements)
+Berikut adalah kebutuhan perangkat lunak untuk pengembangan, hosting, dan pengoperasian sistem berbasis MERN dengan MySQL:
+
+Backend:
+
+Node.js: Untuk pengembangan server backend (disarankan versi LTS)
+Express.js: Framework untuk membangun API dan mengelola rute server
+MySQL: Basis data relasional yang menyimpan data produk, pelanggan, transaksi, dan informasi pengiriman
+MongoDB (opsional, jika diperlukan untuk data non-relasional seperti caching)
+MySQL Connector: Modul Node.js untuk koneksi ke database MySQL
+Frontend:
+
+React.js: Untuk pengembangan antarmuka pengguna yang interaktif dan responsif
+Redux: Untuk pengelolaan state aplikasi secara global, terutama jika terdapat banyak interaksi data
+Bootstrap atau Material-UI: Framework CSS untuk tampilan yang responsif dan mudah disesuaikan
+Server Hosting:
+
+Platform Hosting: AWS, DigitalOcean, atau layanan hosting lain yang mendukung Node.js dan MySQL
+Web Server: Nginx atau Apache, jika diperlukan sebagai reverse proxy
+Docker (opsional): Untuk mempermudah manajemen container aplikasi, terutama dalam deployment
+Pengembangan dan Integrasi:
+
+Git: Versi kontrol untuk kolaborasi dan pelacakan perubahan kode
+Postman atau Insomnia: Untuk pengujian API selama pengembangan
+Visual Studio Code: IDE populer untuk pengembangan full-stack
