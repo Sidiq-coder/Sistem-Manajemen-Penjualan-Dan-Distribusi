@@ -1,0 +1,28 @@
+{
+  "name": "sistem-manajemen-penjualan-distribusi",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@11.8.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "build": "corepack pnpm -r build",
+    "dev": "corepack pnpm --filter @smpd/shared build && corepack pnpm --parallel --filter @smpd/api --filter @smpd/web dev",
+    "lint": "corepack pnpm -r lint",
+    "typecheck": "corepack pnpm -r typecheck",
+    "test": "corepack pnpm -r test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prisma:generate": "corepack pnpm --filter @smpd/api prisma:generate",
+    "prisma:migrate": "corepack pnpm --filter @smpd/api prisma:migrate",
+    "seed": "corepack pnpm --filter @smpd/api seed"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.5.0",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}

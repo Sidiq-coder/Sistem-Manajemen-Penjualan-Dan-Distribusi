@@ -1,36 +1,75 @@
-# Sistem-Manajemen-Penjualan-Dan-Distribusi
-Proyek ini bertujuan untuk mengembangkan Sistem Manajemen Penjualan dan Distribusi sebagai sarana pembelajaran dalam pemrograman dan pengembangan sistem informasi.
-Dengan fokus pada pengelolaan data penjualan dan distribusi produk, proyek ini memberikan pengalaman praktis dalam merancang, membangun, dan menerapkan aplikasi yang dapat digunakan dalam konteks bisnis.
+# Sistem Manajemen Penjualan dan Distribusi
 
-Tujuan Proyek:
+Modular monolith untuk mengelola katalog, pelanggan, stok multi-gudang, sales order, invoice,
+pembayaran, shipment, retur, keluhan, audit log, dan laporan manajemen.
 
-Pembelajaran Praktis: Mengimplementasikan teori yang telah dipelajari dalam mata kuliah terkait sistem informasi, basis data, dan pemrograman.
-Pengembangan Keterampilan: Meningkatkan keterampilan teknis dalam pengembangan perangkat lunak, termasuk bahasa pemrograman, manajemen basis data, dan desain antarmuka pengguna.
-Pemahaman Proses Bisnis: Memahami alur kerja dalam manajemen penjualan dan distribusi, termasuk pemesanan, pengiriman, dan pengelolaan inventaris.
+## Stack
 
-Fitur Utama:
+- Web: Next.js App Router, React, TypeScript, Tailwind CSS, TanStack Query, Recharts.
+- API: NestJS, TypeScript, REST/OpenAPI, Zod, JWT cookie authentication, RBAC.
+- Data: PostgreSQL, Prisma ORM, Redis siap untuk cache/queue.
+- Quality: Vitest, ESLint, Prettier, GitHub Actions, Docker Compose.
 
-Manajemen Data Pelanggan: Pengguna dapat menambahkan, mengedit, dan menghapus data pelanggan dengan mudah.
+Prototype statis lama dipertahankan di `legacy/static-prototype`.
 
-Proses Penjualan: Memungkinkan pengguna untuk mencatat transaksi penjualan dan menghasilkan laporan penjualan.
+## Menjalankan secara lokal
 
-Manajemen Inventaris: Memantau stok barang, mengatur pengadaan, dan memberikan notifikasi saat stok rendah.
+Prasyarat: Node.js 22+, pnpm 11+, PostgreSQL 15+ (atau Docker).
 
-Distribusi dan Pengiriman: Mengelola pengiriman produk ke pelanggan dan memantau status pengiriman.
+```bash
+copy .env.example .env
+pnpm install
+docker compose up -d postgres redis
+pnpm prisma:generate
+pnpm prisma:migrate
+pnpm seed
+pnpm dev
+```
 
-Laporan dan Analisis: Menyediakan laporan penjualan yang dapat membantu dalam analisis kinerja bisnis.
+- Web: <http://localhost:3000>
+- API: <http://localhost:4000/api>
+- Swagger: <http://localhost:4000/api/docs>
+- Health: <http://localhost:4000/api/health/live>
+- Metrics: <http://localhost:4000/api/metrics>
 
-Teknologi yang Digunakan:
+Akun seed default:
 
-Bahasa Pemrograman: Javascript.
+```txt
+admin@smpd.local
+Admin123!
+```
 
-Database: MySQL.
+Ubah `SEED_ADMIN_PASSWORD` sebelum seed di lingkungan bersama. Jangan gunakan kredensial demo di
+production.
 
-Framework: Node JS.
+## Perintah kualitas
 
-Antarmuka Pengguna: React JS.
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+```
 
-Manfaat Proyek:
+## Struktur
 
-Proyek ini tidak hanya membantu dalam memahami konsep dasar sistem manajemen penjualan dan distribusi, tetapi juga memberikan pengalaman langsung dalam pengembangan perangkat lunak. Dengan menyelesaikan proyek ini, peserta diharapkan dapat mengaplikasikan pengetahuan yang didapat dalam konteks nyata, serta membangun portofolio yang dapat digunakan untuk peluang karier di masa depan.
+```txt
+apps/
+  api/       NestJS + Prisma
+  web/       Next.js
+packages/
+  shared/    schema Zod dan kontrak bersama
+infra/
+  docker/    image API dan web
+docs/        arsitektur, API, proses bisnis, deployment
+legacy/      prototype awal
+```
 
+## Status ruang lingkup
+
+MVP operasional tersedia untuk auth/RBAC, master data, inventory ledger, reservasi stok, order,
+invoice, verifikasi pembayaran, shipment, retur/keluhan, dashboard, dan laporan dasar.
+
+Fitur fase lanjut yang sengaja belum dinyatakan production-ready: payment gateway, S3 upload,
+BullMQ export besar, 2FA/TOTP, notifikasi email/SMS, forecasting ML, route optimization,
+Kubernetes/Terraform, serta backup/restore terotomasi. Lihat [roadmap](docs/ROADMAP.md).
