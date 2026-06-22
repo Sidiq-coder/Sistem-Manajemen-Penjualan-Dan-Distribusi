@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import {
   ArrowRight,
   BarChart3,
@@ -10,16 +11,14 @@ import {
   FileCheck2,
   Gauge,
   Headphones,
-  History,
   Layers3,
   LockKeyhole,
   Menu,
   PackageSearch,
   PackageCheck,
+  PlayCircle,
   RefreshCcw,
-  SearchCheck,
   ShieldCheck,
-  Sparkles,
   Store,
   Truck,
   UserCog,
@@ -77,34 +76,6 @@ const features = [
     description:
       'Lihat KPI, tren penjualan, performa produk, kondisi stok, dan pengiriman dari satu dashboard.',
     color: 'cyan',
-  },
-  {
-    icon: Users,
-    title: 'Manajemen pelanggan',
-    description:
-      'Simpan kontak, alamat, segmentasi, limit kredit, dan histori transaksi pelanggan secara terstruktur.',
-    color: 'teal',
-  },
-  {
-    icon: UserCog,
-    title: 'User & hak akses',
-    description:
-      'Atur akun berdasarkan tanggung jawab dengan navigasi dan endpoint yang dibatasi sesuai role.',
-    color: 'blue',
-  },
-  {
-    icon: History,
-    title: 'Audit aktivitas',
-    description:
-      'Catat autentikasi, perubahan data, stok, order, pembayaran, dan aktivitas sensitif untuk penelusuran.',
-    color: 'amber',
-  },
-  {
-    icon: SearchCheck,
-    title: 'Pencarian & filter',
-    description:
-      'Temukan produk, pelanggan, transaksi, pembayaran, dan pengiriman dengan pencarian terpusat.',
-    color: 'violet',
   },
 ];
 
@@ -245,6 +216,9 @@ export default function LandingPage() {
             <a href="#cara-kerja" className="transition hover:text-white">
               Cara kerja
             </a>
+            <a href="/demo" className="transition hover:text-white">
+              Demo
+            </a>
             <a href="#keamanan" className="transition hover:text-white">
               Keamanan
             </a>
@@ -255,10 +229,10 @@ export default function LandingPage() {
 
           <div className="hidden items-center gap-3 sm:flex">
             <a
-              href="#cakupan"
+              href="/demo"
               className="rounded-xl bg-teal-400 px-5 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-teal-300"
             >
-              Kenali platform
+              Lihat demo
             </a>
           </div>
 
@@ -272,6 +246,7 @@ export default function LandingPage() {
                 ['#fitur', 'Fitur'],
                 ['#cakupan', 'Cakupan modul'],
                 ['#cara-kerja', 'Cara kerja'],
+                ['/demo', 'Demo interaktif'],
                 ['#keamanan', 'Keamanan'],
                 ['#pengguna', 'Role pengguna'],
               ].map(([href, label]) => (
@@ -280,10 +255,10 @@ export default function LandingPage() {
                 </a>
               ))}
               <a
-                href="#fitur"
+                href="/demo"
                 className="mt-2 block rounded-lg bg-teal-400 px-4 py-3 text-center font-bold text-slate-950"
               >
-                Jelajahi platform
+                Lihat demo
               </a>
             </nav>
           </details>
@@ -297,43 +272,45 @@ export default function LandingPage() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-5 pb-28 pt-20 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:pb-36 lg:pt-28">
           <div className="landing-fade-up max-w-2xl">
-            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-teal-300/20 bg-teal-300/10 px-4 py-2 text-xs font-semibold text-teal-200">
-              <Sparkles size={15} />
-              Operasi penjualan dan distribusi dalam satu platform
+            <div className="mb-7 inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-teal-200">
+              <span className="size-2 rounded-full bg-teal-300 shadow-[0_0_0_6px_rgba(94,234,212,0.1)]" />
+              Order → stok → invoice → pengiriman
             </div>
             <h1 className="text-5xl font-semibold leading-[1.05] tracking-[-0.045em] sm:text-6xl lg:text-7xl">
-              Kendalikan bisnis dari pesanan hingga{' '}
-              <span className="text-teal-300">pengiriman.</span>
+              Satu alur kerja. <span className="text-teal-300">Tidak ada status yang hilang</span>{' '}
+              di tengah jalan.
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-8 text-slate-300">
-              SMPD menyatukan penjualan, inventaris, pembayaran, dan distribusi agar tim bekerja
-              lebih cepat dengan data yang konsisten dan dapat dipertanggungjawabkan.
+              Saat order dikonfirmasi, stok langsung direservasi. Saat pembayaran diverifikasi,
+              distribusi dapat bergerak. Setiap perubahan tercatat dan dapat ditelusuri.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <a
-                href="#fitur"
+                href="/demo"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-teal-400 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-teal-300"
               >
-                Pelajari seluruh fitur
+                Buka demo sistem
                 <ArrowRight className="transition group-hover:translate-x-1" size={18} />
               </a>
               <a
-                href="#pengguna"
+                href="#cara-kerja"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 font-semibold text-white transition hover:bg-white/10"
               >
-                Lihat role pengguna
+                Pelajari alurnya
                 <ChevronRight size={18} />
               </a>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-7 gap-y-3 text-sm text-slate-300">
-              {['Data real-time', 'Role-based access', 'Audit log lengkap'].map((item) => (
-                <span key={item} className="flex items-center gap-2">
-                  <span className="grid size-5 place-items-center rounded-full bg-teal-400/15 text-teal-300">
-                    <Check size={13} strokeWidth={3} />
+              {['Reservasi stok otomatis', 'Akses sesuai peran', 'Jejak audit per transaksi'].map(
+                (item) => (
+                  <span key={item} className="flex items-center gap-2">
+                    <span className="grid size-5 place-items-center rounded-full bg-teal-400/15 text-teal-300">
+                      <Check size={13} strokeWidth={3} />
+                    </span>
+                    {item}
                   </span>
-                  {item}
-                </span>
-              ))}
+                ),
+              )}
             </div>
           </div>
 
@@ -343,16 +320,70 @@ export default function LandingPage() {
         <div className="absolute inset-x-0 bottom-0 translate-y-1/2">
           <div className="mx-auto grid max-w-5xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-slate-200 bg-slate-200 shadow-2xl shadow-slate-950/10 sm:grid-cols-4">
             {[
-              ['1 platform', 'Operasi terintegrasi'],
+              ['6 domain', 'Dalam satu alur'],
               ['10 role', 'Akses sesuai tugas'],
-              ['Real-time', 'Stok dan transaksi'],
-              ['24/7', 'Visibilitas bisnis'],
+              ['1 ledger', 'Riwayat pergerakan stok'],
+              ['End-to-end', 'Order sampai diterima'],
             ].map(([value, label]) => (
               <div key={label} className="bg-white px-5 py-6 text-center">
                 <p className="text-2xl font-bold tracking-tight text-slate-950">{value}</p>
                 <p className="mt-1 text-xs font-medium text-slate-500">{label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 pb-6 pt-40 lg:px-8 lg:pt-44">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid overflow-hidden rounded-[2rem] bg-[#d9efe9] lg:grid-cols-[1.08fr_0.92fr]">
+            <div className="relative min-h-[430px] overflow-hidden">
+              <Image
+                src="/images/warehouse-operations-demo.png"
+                alt="Tim gudang memindai paket dan memeriksa stok pada tablet"
+                fill
+                priority
+                className="object-cover"
+                sizes="(min-width: 1024px) 54vw, 100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/10 to-transparent" />
+              <div className="absolute bottom-5 left-5 rounded-xl bg-white/90 px-4 py-3 text-xs font-semibold text-slate-700 shadow-xl backdrop-blur">
+                Gambaran operasional gudang
+              </div>
+            </div>
+            <div className="flex flex-col justify-center p-7 sm:p-10 lg:p-14">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal-800">
+                Lihat sebelum menggunakan
+              </p>
+              <h2 className="mt-4 text-3xl font-bold tracking-[-0.035em] sm:text-4xl">
+                Demo yang menjelaskan kerja sistem, bukan sekadar memamerkan dashboard.
+              </h2>
+              <p className="mt-5 leading-7 text-slate-700">
+                Ikuti satu pesanan dari meja sales sampai paket diterima. Setiap tahap menunjukkan
+                siapa yang bekerja, data apa yang berubah, dan kontrol apa yang dijalankan sistem.
+              </p>
+              <div className="mt-7 grid grid-cols-2 gap-3 text-sm">
+                {['Order dibuat', 'Stok direservasi', 'Invoice diverifikasi', 'Paket dilacak'].map(
+                  (item, index) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-3 border-t border-teal-900/15 pt-3"
+                    >
+                      <span className="font-mono text-xs text-teal-800">0{index + 1}</span>
+                      <span className="font-semibold">{item}</span>
+                    </div>
+                  ),
+                )}
+              </div>
+              <a
+                href="/demo"
+                className="group mt-9 inline-flex w-fit items-center gap-3 rounded-xl bg-slate-950 px-5 py-3.5 font-bold text-white transition hover:bg-slate-800"
+              >
+                <PlayCircle size={19} className="text-teal-300" />
+                Mulai tur demo
+                <ArrowRight size={17} className="transition group-hover:translate-x-1" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -647,9 +678,9 @@ function DashboardPreview() {
         </div>
       </div>
       <div className="absolute -right-3 bottom-16 z-20 hidden rounded-2xl border border-white/10 bg-slate-900/90 p-4 shadow-2xl backdrop-blur sm:block">
-        <p className="text-xs text-slate-400">Pengiriman berhasil</p>
-        <p className="mt-1 text-2xl font-bold text-white">96.8%</p>
-        <p className="mt-1 text-xs font-semibold text-emerald-300">↑ 8.4% bulan ini</p>
+        <p className="text-xs text-slate-400">Dalam perjalanan</p>
+        <p className="mt-1 text-2xl font-bold text-white">18 shipment</p>
+        <p className="mt-1 text-xs font-semibold text-emerald-300">6 tiba hari ini</p>
       </div>
 
       <div className="rotate-[1.5deg] rounded-[1.7rem] border border-white/15 bg-white/10 p-2 shadow-[0_40px_100px_rgba(0,0,0,0.45)] backdrop-blur">
@@ -700,7 +731,7 @@ function DashboardPreview() {
               <div className="flex items-end justify-between">
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-widest text-teal-700">
-                    Dashboard
+                    Dashboard · data ilustrasi
                   </p>
                   <p className="mt-1 text-lg font-bold">Ringkasan operasional</p>
                 </div>
